@@ -1,4 +1,12 @@
-import { Controller, UseInterceptors, UploadedFile, Post, ParseFilePipe, MaxFileSizeValidator } from "@nestjs/common";
+import {
+  Controller,
+  UseInterceptors,
+  UploadedFile,
+  Post,
+  Get,
+  ParseFilePipe,
+  MaxFileSizeValidator
+} from "@nestjs/common";
 import { ApiTags, ApiConsumes, ApiBody } from "@nestjs/swagger";
 import { FileInterceptor } from "@nestjs/platform-express";
 import { FilesService } from "./files.service";
@@ -6,10 +14,16 @@ import { fileStorage } from "./storage";
 
 
 @Controller("files")
-@ApiTags("users")
+@ApiTags("files")
 export class FilesController {
   constructor(private readonly filesService: FilesService) {
   }
+
+  @Get()
+  findAll() {
+    return this.filesService.findAll();
+  }
+
 
   @Post()
   @UseInterceptors(FileInterceptor("file", {
