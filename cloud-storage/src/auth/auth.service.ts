@@ -1,11 +1,14 @@
 import { ForbiddenException, Injectable } from "@nestjs/common";
 import { UsersService } from "../users/users.service";
 import { CreateUserDto } from "../users/dto/create-user.dto";
+import { UserEntity } from "../users/entities/user.entity";
+import { JwtService } from "@nestjs/jwt";
 
 @Injectable()
 export class AuthService {
   constructor(
-    private userService: UsersService
+    private userService: UsersService,
+    private jwtService: JwtService
   ) {
   }
 
@@ -20,14 +23,24 @@ export class AuthService {
   }
 
   async register(dto: CreateUserDto) {
-
     try {
       const userData = await this.userService.create(dto);
-      return userData;
+
+      return {
+        token: this.jwtService.sign({ id: userData.id })
+      };
 
     } catch (err) {
       console.log(err);
       throw new ForbiddenException("Error while registration");
     }
+
   }
+
+  async login(user: UserEntity) {
+    return {
+      token: this.jwtService.sign({ id: user.id })
+    };
+  }
+
 }
