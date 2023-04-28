@@ -1,10 +1,11 @@
 import React from "react";
 import { setCookie } from "nookies";
-import styles from "./Auth.module.scss";
 import { Button, Form, Input, notification } from "antd";
 
 import * as Api from "../../../api";
 import { LoginFormDTO } from "../../../api/dto/auth.dto";
+
+import styles from "./Auth.module.scss";
 
 export const LoginForm: React.FC = () => {
   const onSubmit = async (values: LoginFormDTO) => {
