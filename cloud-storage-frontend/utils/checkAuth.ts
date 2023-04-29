@@ -1,8 +1,7 @@
 import { GetServerSidePropsContext } from "next";
-import axios from "../core/axios";
 import nookies from "nookies";
-
-import * as Api from "../api";
+import axios from "@/core/axios";
+import * as Api from "@/api";
 
 export const checkAuth = async (ctx: GetServerSidePropsContext) => {
   const { _token } = nookies.get(ctx);
@@ -11,10 +10,11 @@ export const checkAuth = async (ctx: GetServerSidePropsContext) => {
 
   try {
     await Api.auth.getMe();
+
     return {
       props: {},
     };
-  } catch (error) {
+  } catch (err) {
     return {
       redirect: {
         destination: "/dashboard/auth",

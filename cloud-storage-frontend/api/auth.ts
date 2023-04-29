@@ -1,20 +1,17 @@
-import axios from "../core/axios";
-import { destroyCookie } from "nookies";
-
+import axios from "@/core/axios";
 import {
   LoginFormDTO,
   LoginResponseDTO,
   RegisterFormDTO,
   RegisterResponseDTO,
   User,
-} from "./dto/auth.dto";
+} from "@/api/dto/auth.dto";
+import { destroyCookie } from "nookies";
 
 export const login = async (
   values: LoginFormDTO
 ): Promise<LoginResponseDTO> => {
-  const { data } = await axios.post("/auth/login", values);
-
-  return data;
+  return (await axios.post("/auth/login", values)).data;
 };
 
 export const register = async (

@@ -8,7 +8,6 @@ export interface LoginResponseDTO {
 }
 
 export type RegisterFormDTO = LoginFormDTO & { fullName: string };
-
 export type RegisterResponseDTO = LoginResponseDTO;
 
 export interface User {

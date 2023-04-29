@@ -1,15 +1,14 @@
-import { LoginForm } from "@/components/auth/LoginForn";
-import { RegistrationForm } from "@/components/auth/RegisatrionForm";
 import { NextPage } from "next";
 import Head from "next/head";
-
+import { LoginForm } from "@/components/auth/LoginForm";
 import { Tabs } from "antd";
+import { RegisterForm } from "@/components/auth/RegisterForm";
 
 const AuthPage: NextPage = () => {
   return (
     <>
       <Head>
-        <title>FC</title>
+        <title>Dashboard / Auth</title>
       </Head>
       <main style={{ width: 400, margin: "50px auto" }}>
         <Tabs
@@ -22,7 +21,7 @@ const AuthPage: NextPage = () => {
             {
               label: "Регистрация",
               key: "2",
-              children: <RegistrationForm />,
+              children: <RegisterForm />,
             },
           ]}
         />
@@ -30,5 +29,7 @@ const AuthPage: NextPage = () => {
     </>
   );
 };
+
+c
 
 export default AuthPage;
