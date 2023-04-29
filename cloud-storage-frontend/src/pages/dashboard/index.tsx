@@ -1,7 +1,6 @@
 import { NextPage, GetServerSidePropsContext } from "next";
 import React from "react";
 import { checkAuth } from "../../../utils/checkAuth";
-import { Layout } from "antd";
 import { CustomHeader } from "@/components/Header";
 
 const DashboardPage: NextPage = () => {
