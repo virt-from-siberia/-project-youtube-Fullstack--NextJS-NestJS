@@ -1,5 +1,7 @@
 import { NextPage, GetServerSidePropsContext } from "next";
+import React from "react";
 import { checkAuth } from "../../../utils/checkAuth";
+import { Layout } from "antd";
 import { CustomHeader } from "@/components/Header";
 
 const DashboardPage: NextPage = () => {
@@ -12,6 +14,10 @@ const DashboardPage: NextPage = () => {
     </>
   );
 };
+
+// DashboardPage.getLayout = (page: React.ReactNode) => {
+//   return <Layout title="Dashboard / Главная">{page}</Layout>;
+// };
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   const authProps = await checkAuth(ctx);
